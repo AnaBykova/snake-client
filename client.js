@@ -1,4 +1,4 @@
-/*const net = require("net");
+const net = require("net");
 
 // establishes a connection with the game server
 const connect = function () {
@@ -13,12 +13,11 @@ const connect = function () {
   conn.on("data", (data) => {
     console.log("Server says: ", data);
   });
-
+  
   return conn;
 };
 
 console.log("Connecting ...");
 connect();
-*/
 
-const connect = require("./client");
+module.exports = connect;
