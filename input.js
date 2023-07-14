@@ -1,5 +1,8 @@
+const { connect } = require("./play");
+
 // setup interface to handle user input from stdin
-const setupInput = function () {
+const setupInput = function (conn) {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -13,10 +16,20 @@ const handleUserInput = function () {
   process.stdin.on("data", (key) => {
     if (key === "\u0003") { // Check for Ctrl+C input      
       process.exit(); // Terminate the game
+    } else if (key === "w") {
+      connection.write("Move: up"); // Send "Move: up" to the server
+    } else if (key === "a") {
+      connection.write("Move: left"); // Send "Move: left" to the server
+    } else if (key === "s") {
+      connection.write("Move: down"); // Send "Move: down" to the server
+    } else if (key === "d") {
+      connection.write("Move: right"); // Send "Move: right" to the server
     }
     // Handle other input as needed
   });
 };
+
+let connection;
 
 const stdin = setupInput(); // Call setupInput and store the stdin stream reference
 handleUserInput(); // Call handleUserInput to register the callback handler

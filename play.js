@@ -3,6 +3,8 @@ const { connect } = require("./client");
 const { setupInput } = require("./input");
 
 console.log("Connecting ...");
-connect();
+const connection = connect(); // Store the connection object returned by connect()
 
-setupInput();
+setupInput(connection); // Pass the connection object to setupInput()
+
+module.exports = { connect };
