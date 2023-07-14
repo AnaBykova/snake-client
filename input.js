@@ -24,6 +24,8 @@ const handleUserInput = function () {
       connection.write("Move: down"); // Send "Move: down" to the server
     } else if (key === "d") {
       connection.write("Move: right"); // Send "Move: right" to the server
+    } else if (key === "q") {
+      connection.write("Say: Lucky");
     }
     // Handle other input as needed
   });
